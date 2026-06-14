@@ -28,14 +28,14 @@ public class NeedyGUI extends JFrame {
         getContentPane().setBackground(new Color(13, 27, 42));
 
         JLabel title = new JLabel("NEEDY FORM");
-        title.setBounds(260, 60, 300, 40);
-        title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setForeground(Color.RED);
+        title.setBounds(253, 60, 400, 40);
+        title.setFont(new Font("Arial Black", Font.BOLD, 30));
+        title.setForeground(Color.WHITE);
         add(title);
 
         JLabel do1 = new JLabel("Name:");
         do1.setBounds(200, 180, 100, 25);
-        do1.setForeground(Color.red);
+        do1.setForeground(Color.white);
         add(do1);
 
         name = new JTextField();
@@ -46,7 +46,7 @@ public class NeedyGUI extends JFrame {
 
         JLabel do2 = new JLabel("Need:");
         do2.setBounds(200, 230, 100, 25);
-        do2.setForeground(Color.red);
+        do2.setForeground(Color.white);
         add(do2);
 
         need = new JTextField();
@@ -57,18 +57,25 @@ public class NeedyGUI extends JFrame {
 
         JButton submit = new JButton("SUBMIT");
         submit.setBounds(320, 300, 200, 50);
-        submit.setBackground(new Color(0, 191, 99));
+        submit.setBackground(Color.WHITE);
 
         submit.setForeground(new Color(25,25,112));
-        submit.setFont(new Font("Arial", Font.BOLD, 16));
+        submit.setFont(new Font("Arial Black", Font.BOLD, 16));
         
         submit.setBorder(BorderFactory.createLineBorder(new Color(255, 215, 0, 2)));
 
         add(submit);
+        
+        JButton back = new JButton("BACK");
+        back.setBounds(320, 370, 200, 50);
+        back.setBackground(Color.WHITE);
+        back.setForeground(new Color(25,25, 112));
+        back.setFont(new Font("Arial Black",Font.BOLD,16));
+        add(back);
 
         submit.addActionListener(e -> {
             try {
-                Receiver r = new Receiver(name.getText(), "001", need.getText());
+                Receiver r = new Receiver(name.getText(), "25FA-001-AI", need.getText());
 
             String suggestion = AlHelper.suggestDonation(need.getText());
             String priority = AlHelper.getPriority(need.getText());
@@ -84,6 +91,11 @@ public class NeedyGUI extends JFrame {
                 JOptionPane.showMessageDialog(this, "Error: " + um.getMessage());
             }
      
+        });
+       
+        back.addActionListener(e -> {
+            new WelcomeGUi().setVisible(true);
+            this.dispose();
         });
 
         setVisible(true);
