@@ -1,5 +1,6 @@
 welfare/Donor.class
 welfare/AlHelper.class
+welfare/DBconnection.class
 welfare/DonorMenuGUI.class
 welfare/ClothesDonationGUI.class
 welfare/GlobalHistory.class

@@ -37,6 +37,8 @@ public class AlHelper {
 
         if (need.equalsIgnoreCase("Education"))
             return "MEDIUM!";
+        if (need.equalsIgnoreCase("Clothes"))
+            return "MEDIUM";
 
         return "LOW";
     }

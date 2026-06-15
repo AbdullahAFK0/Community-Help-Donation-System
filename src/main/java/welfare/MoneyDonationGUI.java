@@ -76,22 +76,21 @@ public class MoneyDonationGUI extends JFrame {
         submit.addActionListener(e -> {
             try{
                 Donor d = new Donor(name.getText(), "25FA-Anonymous-AI", amount.getText());
-                 MoneyDonation md = new MoneyDonation();
-            String result = md.processDonation();
+    MoneyDonation md = new MoneyDonation();
+    String result = md.processDonation();
 
-            String suggestion = AlHelper.suggestDonation("Medical");
-            String priority = AlHelper.getPriority("Medical");
+    String suggestion = AlHelper.suggestDonation("Medical");
+    String priority = AlHelper.getPriority("Medical");
 
             GlobalHistory.add(result + " | " + d.getName()+ " | " + "Donated amount: " + amount.getText()
                     + " | AI: " + suggestion + " | Priority: " + priority);
 
             JOptionPane.showMessageDialog(this, result);
-            }
-            catch(Exception loneWolf){
-                JOptionPane.showMessageDialog(this, "Error: Try again later!");
-            }
-
+}catch(Exception not){
+    JOptionPane.showMessageDialog(this, "Something went wrong!");
+}
            
+
         });
          back.addActionListener(e -> {
             new DonorMenuGUI().setVisible(true);

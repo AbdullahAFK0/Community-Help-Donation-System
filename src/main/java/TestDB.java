@@ -7,10 +7,3 @@
  *
  * @author abdullah
  */
-import com.mysql.cj.jdbc.Driver;
-
-public class TestDB {
-    public static void main(String[] args) {
-        System.out.println("Hello");
-    }
-}

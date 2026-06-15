@@ -12,6 +12,7 @@ package welfare;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class FoodDonationGUI extends JFrame {
 
     JTextField name, qty;
@@ -71,33 +72,31 @@ public class FoodDonationGUI extends JFrame {
         back.setBorder(BorderFactory.createLineBorder(new Color(255, 215, 0, 2)));
         add(back);
 
-        submit.addActionListener(e -> {
-            try{
-                Donor d = new Donor(name.getText(), "player 456", "food");
-                
-                FoodDonation fd = new FoodDonation();
-                String result = fd.processDonation();
+       submit.addActionListener(e -> {
+    try {
+        Donor d = new Donor(name.getText(), "player 456", "food");
 
-            String suggestion = AlHelper.suggestDonation("Food");
-            String priority = AlHelper.getPriority("Food");
+        FoodDonation fd = new FoodDonation();
+        String result = fd.processDonation();
 
-            GlobalHistory.add(
-                    result +
-                    " | Name: " + d.getName() +  " | Qty: " + qty.getText() +
-                    " | AI Suggestion: " + suggestion +
-                    " | Priority: " + priority
-            );
+        String suggestion = AlHelper.suggestDonation("Food");
+        String priority = AlHelper.getPriority("Food");
+
+        GlobalHistory.add(
+                result +
+                " | Name: " + d.getName() +
+                " | Qty: " + qty.getText() +
+                " | AI Suggestion: " + suggestion +
+                " | Priority: " + priority
+        );
 
             JOptionPane.showMessageDialog(this, result);
             }
             catch(Exception projectt){
                 JOptionPane.showMessageDialog(this, "Error: The owner of this Welfare System is dead!");
-                
-            }
-            
 
-        });
-    
+    }
+});
         back.addActionListener(e -> {
             new DonorMenuGUI().setVisible(true);
             this.dispose();

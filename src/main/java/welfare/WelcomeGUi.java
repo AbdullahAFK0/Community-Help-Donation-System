@@ -14,6 +14,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WelcomeGUi extends JFrame {
+    JTextArea historyArea;
+    JScrollPane scrollPane;
 
     public WelcomeGUi() {
 
@@ -56,6 +58,15 @@ public class WelcomeGUi extends JFrame {
         donation.setBorder(BorderFactory.createLineBorder(new Color(255, 215, 0, 2)));
         needy.setBorder(BorderFactory.createLineBorder(new Color(255, 215, 0, 2)));
         history.setBorder(BorderFactory.createLineBorder(new Color(255, 215, 0, 2)));
+        historyArea = new JTextArea();
+        historyArea.setEditable(false);
+        historyArea.setFont(new Font("Arial", Font.PLAIN, 14));
+
+        scrollPane = new JScrollPane(historyArea);
+        scrollPane.setBounds(100, 420, 550, 100);
+        scrollPane.setVisible(false);
+
+        add(scrollPane);
         
         
         add(donation);
@@ -72,11 +83,20 @@ public class WelcomeGUi extends JFrame {
                 });
            
         
+history.addActionListener(e -> {
 
-        history.addActionListener(e ->{
-                JOptionPane.showMessageDialog(this, (GlobalHistory.getHistory())
-                );
-        });
+    String data = GlobalHistory.getHistory();
+
+    if (data == null || data.isEmpty()) {
+        historyArea.setText("No history available yet.");
+    } else {
+        historyArea.setText(
+            "===== DONATION HISTORY =====\n\n" + data
+        );
+    }
+
+    scrollPane.setVisible(true);
+});
 
         setVisible(true);
     }

@@ -12,6 +12,7 @@ package welfare;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class ClothesDonationGUI extends JFrame {
 
     JTextField name, type;
@@ -74,21 +75,20 @@ public class ClothesDonationGUI extends JFrame {
         submit.addActionListener(e -> {
             try{
                 Donor d1 = new Donor(name.getText(), "25FA-111-AI", type.getText());
-                 ClothesDonation cd = new ClothesDonation();
-            String result = cd.processDonation();
+        ClothesDonation cd = new ClothesDonation();
+        String result = cd.processDonation();
 
-            String suggestion = AlHelper.suggestDonation("Clothes");
-            String priority = AlHelper.getPriority("Clothes");
+        String suggestion = AlHelper.suggestDonation("Clothes");
+        String priority = AlHelper.getPriority("Clothes");
 
             GlobalHistory.add(result + " | " + d1.getName()+ " | " + d1.getDonationType()
                     + " | AI: " + suggestion + " | Priority: " + priority);
 
             JOptionPane.showMessageDialog(this, result);
-            }
-            catch(Exception something){
-                JOptionPane.showMessageDialog(this, "Error: Something Went Wrong!");
-            }
-        });
+    }catch(Exception not){
+        JOptionPane.showMessageDialog(this, "Something went wrong!");
+    }
+});
          back.addActionListener(e -> {
             new DonorMenuGUI().setVisible(true);
             this.dispose();

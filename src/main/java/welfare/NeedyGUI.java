@@ -13,6 +13,7 @@ package welfare;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class NeedyGUI extends JFrame {
 
     JTextField name, need;
@@ -73,25 +74,28 @@ public class NeedyGUI extends JFrame {
         back.setFont(new Font("Arial Black",Font.BOLD,16));
         add(back);
 
-        submit.addActionListener(e -> {
-            try {
+       
+       submit.addActionListener(e -> {
+    try {
                 Receiver r = new Receiver(name.getText(), "25FA-001-AI", need.getText());
 
             String suggestion = AlHelper.suggestDonation(need.getText());
             String priority = AlHelper.getPriority(need.getText());
 
-            GlobalHistory.add(
-                    "NEEDY | " + r.getName() +
-                    " | Need: " + r.getHelpNeeded() +
+        GlobalHistory.add(
+                "NEEDY | " + r.getName() +
+                " | Need: " + r.getHelpNeeded() +
                     " | Suggestion: " + suggestion +
                     " | Priority: " + priority
-            );
+        );
             JOptionPane.showMessageDialog(this, "Saved Successfully");
             }catch (Exception um) {
                 JOptionPane.showMessageDialog(this, "Error: " + um.getMessage());
             }
-     
-        });
+
+   
+       } );
+
        
         back.addActionListener(e -> {
             new WelcomeGUi().setVisible(true);
